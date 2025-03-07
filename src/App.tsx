@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Scanner from "./pages/Scanner";
 import Tracker from "./pages/Tracker";
 import Recipes from "./pages/Recipes";
+import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/scanner" element={<Scanner />} />
           <Route path="/tracker" element={<Tracker />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/analytics" element={<Analytics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
