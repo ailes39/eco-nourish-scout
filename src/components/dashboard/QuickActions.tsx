@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { DashboardCard } from "./DashboardCard";
-import { Lightning, Camera, Clock, ChefHat, Utensils, Barcode } from "lucide-react";
+import { Zap, Camera, Clock, ChefHat, Utensils, Barcode } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ActionButtonProps {
@@ -10,9 +10,10 @@ interface ActionButtonProps {
   label: string;
   to: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-function ActionButton({ icon, label, to, className }: ActionButtonProps) {
+function ActionButton({ icon, label, to, className, style }: ActionButtonProps) {
   return (
     <Link 
       to={to} 
@@ -21,6 +22,7 @@ function ActionButton({ icon, label, to, className }: ActionButtonProps) {
         "hover:bg-secondary hover:scale-105",
         className
       )}
+      style={style}
     >
       <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-2">
         {icon}
@@ -42,7 +44,7 @@ export function QuickActions() {
   return (
     <DashboardCard 
       title="Quick Actions" 
-      icon={<Lightning className="w-5 h-5 text-eco-500" />}
+      icon={<Zap className="w-5 h-5 text-eco-500" />}
       className="h-full"
     >
       <div className="grid grid-cols-3 md:grid-cols-5 gap-2">

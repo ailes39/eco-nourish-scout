@@ -1,14 +1,29 @@
-
 import React, { useState } from "react";
 import { Camera, ImagePlus, Barcode, ArrowRight, Loader2 } from "lucide-react";
 import { CustomButton } from "../ui/custom-button";
 import { cn } from "@/lib/utils";
 
+interface ScanResults {
+  food: string;
+  calories: number;
+  macros: {
+    protein: number;
+    carbs: number;
+    fats: number;
+  };
+  sustainability: {
+    score: number;
+    footprint: string;
+    suggestions: string[];
+  };
+  ingredients: string[];
+}
+
 export function MealScanner() {
   const [scanMode, setScanMode] = useState<"camera" | "upload" | "barcode">("camera");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [scanResults, setScanResults] = useState<any | null>(null);
+  const [scanResults, setScanResults] = useState<ScanResults | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -239,7 +254,7 @@ export function MealScanner() {
                   {scanResults.sustainability.footprint}
                 </p>
                 <ul className="mt-2 space-y-1">
-                  {scanResults.sustainability.suggestions.map((suggestion: string, index: number) => (
+                  {scanResults.sustainability.suggestions.map((suggestion, index) => (
                     <li key={index} className="text-sm flex items-start">
                       <span className="text-eco-500 mr-2">•</span>
                       {suggestion}
@@ -251,7 +266,7 @@ export function MealScanner() {
               <div>
                 <h3 className="text-lg font-medium">Ingredients</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {scanResults.ingredients.map((ingredient: string, index: number) => (
+                  {scanResults.ingredients.map((ingredient, index) => (
                     <span
                       key={index}
                       className="bg-secondary px-3 py-1 rounded-full text-sm"
