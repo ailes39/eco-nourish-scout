@@ -17,7 +17,7 @@ const Analytics = () => {
 
   return (
     <Layout className="px-4 py-6 md:px-6 lg:px-8">
-      <header className="max-w-6xl mx-auto mb-8">
+      <header className="max-w-6xl mx-auto mb-8 pt-8">
         <h1 className="text-3xl md:text-4xl font-medium tracking-tight">Analytics Dashboard</h1>
         <p className="text-muted-foreground mt-2">
           Track your nutrition and waste reduction progress over time
